@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Github Pages + Hexo 搭建个人博客</title>
+    <link rel="stylesheet" href="../css/reveal.css">
+    <link rel="stylesheet" href="../css/theme/black.css">
+    <style type="text/css">
+        .code {
+            background-color: #fff;
+            color: aqua;
+            text-align: left;
+        }
+
+        .c-blue {
+            color: aqua;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="reveal">
+        <div class="slides">
+            <section>
+                <h1> Github Pages + Hexo 搭建个人博客</h1>
+                <p>计软网安web组--张涵宇<p>
+            </section>
+            <section>
+                <section>
+                    <h2> 什么是Github Pages?</h2>
+                    <p class="fragment">用官方的话说，Github Pages 就是:</p>
+                    <p class="fragment"><em>为你或你的项目提供的网站。直接从你的Github仓库代码托管。仅仅需要编辑，推送，然后任何改变都是在线实时的。</em></p>
+                </section>
+                <section data-markdown>
+                    <textarea data-template>
+                                ### 创建github账户和安装Git、node.js
+                                Mac OS 下，如果安装了Homebrew,直接输入:
+
+                                `brew install git`
+
+                                Windows 可以下载安装 [Cmder](http://www.cmder.net) Full 版本或者去[Git](https://git-scm.com/)官网下载
+                        </textarea>
+                </section>
+            </section>
+            <section>
+                <h2>生成SSH KEYS</h2>
+                <p>SSH Keys 是什么？SSH Keys 指的是在电脑上生成的一对秘钥，包含公钥Public Key与秘钥Private Key。</p>
+                <p>它可以用来验证你的身份</p>
+            </section>
+            <section>
+                <p>使用下面的命令生成新的 SSH Keys:</p>
+                <p class="code">ssh-keygen</p>
+                <p>一路回车，就可以生成一对SSH Keys。</p>
+            </section>
+            <section>
+                <h2>在 Github 中使用 ssh key</h2>
+                <p>把生成的id_rsa.pub文件里的密钥复制粘贴到你的GitHub账户里就可以了</p>
+            </section>
+            <section>
+                <p>首先，使用命令查看 id_rsa.pub文件内容:</p>
+                <p class="code">cat ~/.ssh/id_rsa.pub</p>
+            </section>
+            <section>
+                <p>然后，在你的Github账户->setting->SSH and GPG keys中新增一个SSH Keys以及粘贴刚才复制的密钥</p>
+            </section>
+            <section>
+                <p>那么怎么验证你已经有权访问你在Github 托管的仓库了呢，打开命令行输入：</p>
+                <p class="code">ssh -T git@github.com</p>
+            </section>
+            <section>
+                <p>如果显示下面的信息，说明已经大功告成，你的本地电脑就顺利和你的Github账户联系在一起了：</p>
+                <p class="code">Hi Davont! You've successfully authenticated, but GitHub does not provide shell access.</p>
+            </section>
+            <section>
+                <h1>新建你的第一个GitHUb仓库</h1>
+                <p>下面就开始新建你的第一个Github仓库，名称随意，并且为该仓库配置开启Github Pages</p>
+            </section>
+            <section>
+                <section>
+                    <h2>使用Github Pages 托管个人博客</h2>
+                </section>
+                <section>
+                    <h2>Hexo 和 Jekyll 对比</h2>
+                    <p>为什么要使用[Hexo](https://hexo.io/)和[Jekyll](https://jekyllrb.com/)这类静态博客框架，其实就是写博客，管理博客方便，比如说支持Markdown,支持命令行一键部署，支持插件等等。</p>>
+                </section>
+            </section>
+            <section>
+                <h2>如何使用HEXO静态博客框架</h2>
+                <p>准备工作做好后，安装NodeJS，最佳方式是通过<span class="c-blue">nvm</span>安装，然后使用<span class="c-blue">nrm</span>切换成淘宝的源</p>
+            </section>
+            <section data-transition="zoom" data-background-transition="slide">
+
+                <pre>
+                    <code class="hljs" data-trim contenteditable>
+# 安装 nvm
+curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.6/install.sh | bash
+# 安装最新版本 NodeJS
+nvm install node
+# 安装稳定版本 NodeJS 
+nvm use stable
+# 切换 node 的版本
+nvm use XXX
+# 查看当前 node 版本
+node -v
+# 安装 nrm
+npm install -g nrm
+#  列出所有可供选择的 NPM registry
+nrm ls
+                    </code>
+                </pre>
+            </section>
+            <section data-transition="Concave" data-background-transition="slide">
+                <p>然后就可以安装Hexo以及使用Hexo搭建你的第一个博客</p>
+                <pre>
+                    <code class="hljs" data-trim contenteditable>
+# 安装 hexo-cli
+npm install hexo cli -g
+# 初始化你的博客文件夹
+hexo init yourBlogName
+# 进入你的博客目录
+cd yourBlogName
+# 启动本地
+hexo server
+                    </code>
+                </pre>
+            </section>
+            <section>
+                <h2>发布一篇新的文章</h2>
+                <pre>
+                    <code class="hljs" data-trim contenteditable>
+#新建文章
+hexo new postName
+#清理 Public 目录
+hexo clean
+# 生成静态页面至 public 目录
+hexo generate
+# 开启预览端口（默认端口4000，‘ctrl+c’关闭server）
+hexo server
+</code>
+                </pre>
+            </section>
+            <section>
+                <p>当然你们也可以通过其他命令新建页面，新建标签页，设置RSS等等，这些可以去[Hexo文档](https://hexo.io/)或者官网上搜索怎么搞</p>
+            </section>
+            <section>
+                <h2>配置站点信息</h2>
+                <p>所有配置可以在_config.yaml中设置：</p>
+                <ul>
+                    <li>title->网站标题</li>
+                    <li>subtitle->网站副标题</li>
+                    <li>description->网站描述</li>
+                    <li>author->你的名字</li>
+                    <li>language->网站使用的语言</li>
+                </ul>
+                <p>注意：在配置时，需要加上冒号：，冒号后面要加一个英文的空格</p>
+            </section>
+            <section>
+                <h2>更换主题</h2>
+                <p><a href="https://hexo.io/themes/">Hexo官网主题</a>，有很多选择，选择一个，然后下载到，或git clone到theme文件夹下</p>
+                <p class="code">git clone https://github.com/iissnan/hexo-theme-next.git themes/next</p>
+            </section>
+            <section>
+                <section>
+                    <h2>部署到github pages</h2>
+                </section>
+                <section>
+                    <h3>新建github仓库</h3>
+                    <p>创建一个xxx.github.io的仓库，这里的xxx表示你的github账户名，设置开启下Github Pages</p>
+                    <p>然后通过Git克隆到本地。将上面的yourBlogName文件夹中内容复制过来</p>
+                </section>
+                <section>
+                    <h2>开始部署</h2>
+                    <h3>安装hexo-deployer-git</h3>
+                    <p class="code">npm install hexo-deployer-git --save</p>
+                </section>
+                <section>
+                    <h2>然后配置</h2>
+                    <p>deploy:
+                        type:git
+                        repo:<repository url>
+                            branch:[branch]
+                    </p>
+                </section>
+                <section>
+                    <h2>最后部署</h2>
+                    <pre>
+                    <code class="hljs" data-trim contenteditable>
+# 直接部署
+hexo deploy
+# 部署之前先 generate
+hexo deploy -g
+</code>
+                </pre>
+                </section>
+            </section>
+            <section>
+                <h2>给github pages绑定个性域名</h2>
+            </section>
+            <section>
+                <h2>域名是什么</h2>
+                <p>域名其实我们经常看到，比如说</p>
+                <p>“www.baidu.com”,"www.sina.com",这两个属于二级域名</p>
+                <p>一级域名是什么？就是"baidu.com","sina.com"</p>
+                <p>每个域名，不管一级域名还是二级域名都对应着唯一一个IP地址，不知道IP地址是什么？只要把它想象成服务器的门牌号就行了</p>
+            </section>
+            <section>
+                <h2>如何绑定注册的域名</h2>
+                <p>域名注册需要付费的，每年大概60块左右，很低的成本，国内的可以去<a href="https://wanwang.aliyun.com/">阿里云万网</a>注册，国外的知名的有<a href="https://sg.godaddy.com/">Godaddy</a></p>
+            </section>
+            <section>
+                <h2>如何将注册的域名绑定到你刚创建的github pages呢？</h2>
+            </section>
+            <section>
+                <p>在你的github仓库新增CNAME文件，加上你要绑定的域名</p>
+                <p>然后，去注册域名的服务器网站后台配置你的域名解析</p>
+            </section>
+            <section>
+                <a href="hanyuspace.cn">hanyuspace.cn</a>
+            </section>
+        </div>
+    </div>
+    <script src="../lib/js/head.min.js"></script>
+    <script src="../js/reveal.js"></script>
+    <script>
+        Reveal.initialize({
+            dependencies: [{
+                    src: '../plugin/markdown/marked.js'
+                },
+                {
+                    src: '../plugin/markdown/markdown.js'
+                },
+                {
+                    src: '../plugin/zoom-js/zoom.js',
+                    async: true
+                },
+                {
+                    src: '../plugin/notes/notes.js',
+                    async: true
+                },
+                {
+                    src: '../plugin/highlight/highlight.js',
+                    async: true,
+                    callback: function () {
+                        hljs.initHighlightingOnLoad();
+                    }
+                }
+            ]
+        });
+    </script>
+</body>
+
+</html>

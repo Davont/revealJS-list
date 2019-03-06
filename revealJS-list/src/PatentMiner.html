@@ -1,0 +1,199 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>week1</title>
+
+		<link rel="stylesheet" href="../css/reveal.css">
+		<link rel="stylesheet" href="../css/theme/black.css">
+		<link rel="stylesheet" href="../css/other.css">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="../lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? '../css/print/pdf.css' : '../css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section style="text-align: left;">
+					<h1>week1</h1>
+					<p>- soopat网站相关功能了解</p>
+					<p>- Django入门</p>
+					<p>- 专利搜索网站模板</p>
+				</section>
+				<section>
+					<section style="text-align:left">
+						<h2>soopat网站相关功能了解</h2>
+						<h4>专利基础知识心得：</h4>
+						<ul style="font-size:28px;">
+							<li>专利种类：发明专利、实用新型专利和外观设计专利</li>
+							<li>专利需要缴纳年费，且每隔几年缴纳的费用也不一样。</li>
+							<li>专利缴费滞后6个月后，专利权终止。</li>
+							<li>专利授权后的有效期:
+								<p>发明专利：20年</p>
+								<p>实用型专利：10年<p>
+								<p>外观设计型专利：10年</p>
+							</li>
+							<li>专利可以通过网上申请</li>
+							<li>专利申请阶段：受理阶段、初步审查阶段、公布阶段、实质审查阶段、授权阶段</li>
+						</ul>
+					</section>
+					<section>
+						<h2><a href="http://www.soopat.com/" target="_blank">SooPAT</a></h2>
+					</section>
+					<section style="text-align:left">
+						<h3>导航栏</h3>
+						<div class="s-nav">
+							<p>搜索
+								<span>国内/国外</span>
+							</p>
+							<p>分析
+								<span>专利分析（附专利类型）</span>
+							</p>
+							<p>新世界
+								<span>高级搜索/国家搜索</span>
+							</p>
+							<p>法规
+								<span>法规/局令/通知</span>
+							</p>
+							<p>图书
+								<span>知识产权/诉讼/专利申请</span>
+							</p>
+							<p>网址导航
+								<span>知识产权/学研资料/学科行业</span>
+							</p>
+							<p>更多
+								<span>其他SooPAT产品</span>
+							</p>
+							<p>登陆
+								<span>登出/私信/个人资料</span>
+							</p>
+						</div>
+					</section>
+					<section>
+						<h2>专利列表</h2>
+						<img src="../img/4.png" alt="Patent-List">
+					</section>
+					<section>
+						<h4>专利分析</h4>
+						<img src="../img/1.png" alt="#">
+					</section>
+					<section>
+						<img src="../img/1.png" alt="#">
+					</section>
+					<section data-background="img/3.png" data-background-repeat="no-repeat" data-background-size="95%"></section>
+				</section>
+				<section>
+					<section><h2><a href="https://yiyibooks.cn/xx/Django_1.11.6/index.html">初识Django</a></h2></section>
+					<section><h3>Linux命令</h3></section>
+					<section>
+						<ol>
+							<li>ls 显示当前路径的文件 -l -a -h</li>
+							<li>pwd 文件目录</li>
+							<li>cd 跳转路径</li>
+							<li>touch 创建文件</li>
+							<li>mkdir 创建文件夹</li>
+							<li>clear 清屏</li>
+							<li>rm 删除</li>
+						</ol>
+					</section>
+					<section>
+						<h2>python基础（略）</h2>
+						<p>python2.x? or python3.x?</p>
+					</section>
+					<section><h2>Django</h2></section>
+					<section>
+						<h3>MVC模式</h3>
+						<ul>
+							<li>大部分开发语言中都有MVC框架</li>
+							<li>MVC框架的核心思想是：解耦</li>
+							<li>m表示model，主要用于对数据库的封装</li>
+							<li>v表示view，用于向用户展示结果</li>
+							<li>c表示controller，是核心，用于处理请求、获取数据、返回结果</li>
+						</ul>
+					</section>
+					<section class="s-mvt">
+						<h3>MVT模式</h3>
+						<ul>
+							<li>Django是一款python的web开发框架</li>
+							<li>m表示model，负责与数据库交互</li>
+							<li>v表示view，是核心，负责接收请求、获取数据、返回结果</li>
+							<li>t表示template，负责呈现内容到浏览器</li>
+						</ul>
+						<img src="../img/mvt.png" alt="MVT">
+					</section>
+					<section>
+						<h3>ORM</h3>
+						<p>MVC框架中ORM，实现数据模型与数据库的解耦，也就是s数据模型的设计不需要依赖于特定的数据库，通过简单的配置就可以轻松更换数据库</p>
+						<p>ORM可以转环特定数据库的insert、update、delete语句，来为对象的增加、修改、删除。</p>
+					</section>
+					<section>
+						<h3>视图</h3>
+						<ul>
+							<li>视图接受Web请求并且返回Web响应</li>
+							<li>视图就是一个python函数，被定义在views.py中</li>
+							<li>响应可以是一张网页的HTML内容，一个重定向，一个404错误等等</li>
+							<li>Request:服务器接收到http协议的请求后，会根据报文创建HttpRequest对象</li>
+							<li>Response:在django.http模块中定义了HttpResponse对象的API,且Response不调用模板，直接返回数据</li>
+						</ul>
+					</section>
+					<section>
+						<h3>模板</h3>
+						<ul>
+							<li>作为Web框架，Django提供了模板，可以很便利的动态生成HTML</li>>
+							<li>模板包含:HTML的静态部分/动态插入内容部分</li>
+							<li>验证码</li>
+						</ul>
+					</section>
+				</section>
+				<section>
+					<section><h2>专利搜索模板</h2></section>
+					<section>
+						<a href="http://www.patexplorer.com/">佰腾网</a><br>
+						<a href="http://wrapbootstrap.com/preview/WB020NMN7">WrapBootstrap</a><br>
+						<a href="http://themicon.co/theme/angle/v3.8.7/html5jquery-bs4/app/dashboard.html">Angle</a><br>
+						<a href="http://www.zcool.com.cn/work/ZMjI1NjM5NDA=.html">站酷网站模板1</a><br>
+						<a href="http://www.zcool.com.cn/work/ZMjIzNDAyNDg=.html">站酷网站模板2</a>
+					</section>
+				</section>
+			</div>
+		</div>
+
+		<script src="../lib/js/head.min.js"></script>
+		<script src="../js/reveal.js"></script>
+		<script>
+
+			// More info https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+				// More info https://github.com/hakimel/reveal.js#dependencies
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/search/search.js', async: true },
+					{ src: 'plugin/zoom-js/zoom.js', async: true },
+					{ src: 'plugin/notes/notes.js', async: true }
+				]
+			});
+
+		</script>
+	</body>
+</html>
